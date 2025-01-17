@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline';">
+    <title>Gela Preparatory School</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .logo img {
+            width: 100px;
+            height: auto;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            padding: 5px;
+            background-color: #fff;
+        }
+        
+        nav {
+            background: #333;
+            color: white;
+            display: flex;
+            justify-content: space-around;
+            padding: 0.5rem 0;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+        }
+        
+        nav a:hover {
+            background: #575757;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .about {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .about h2 {
+            color: #4CAF50;
+        }
+        
+        .about p {
+            font-size: 1.1rem;
+        }
+        
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 1rem;
+            margin: 1rem;
+            text-align: center;
+        }
+        
+        .card h3 {
+            color: #333;
+        }
+        
+        .form-section {
+            background: #f9f9f9;
+            padding: 2rem;
+            margin-top: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-section h2 {
+            color: #4CAF50;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .form-section form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-section label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .form-section input,
+        .form-section textarea,
+        .form-section select {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .form-section button {
+            display: block;
+            width: 100%;
+            padding: 0.75rem;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .form-section button:hover {
+            background: #45a049;
+        }
+        
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        
+        footer p {
+            margin: 0;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const gradeSelect = document.getElementById("grade");
+            const subjectSections = document.querySelectorAll(".grade-subjects");
+
+            gradeSelect.addEventListener("change", function() {
+                const selectedGrade = gradeSelect.value;
+                subjectSections.forEach(section => {
+                    section.style.display = "none";
+                });
+
+                if (selectedGrade) {
+                    const activeSection = document.getElementById(`subjects-grade-${selectedGrade}`);
+                    if (activeSection) {
+                        activeSection.style.display = "block";
+                    }
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo-placeholder.png" alt="School Logo">
+        </div>
+        <h1>Welcome to Gela Preparatory School</h1>
+        <p>Empowering Students for a Brighter Future</p>
+    </header>
+    <nav>
+        <a href="#about">About Us</a>
+        <a href="#services">Our Programs</a>
+        <a href="#register">Register</a>
+        <a href="#contact">Contact Us</a>
+    </nav>
+
+    <div class="container">
+        <section id="about" class="about">
+            <h2>About Us</h2>
+            <p>At Gela Preparatory School, we strive to provide quality education that shapes the leaders of tomorrow. Our mission is to nurture curiosity, foster growth, and instill lifelong learning values.</p>
+        </section>
+
+        <section id="services">
+            <h2>Our Programs</h2>
+            <div class="card">
+                <h3>Primary Education</h3>
+                <p>Building a strong foundation for young minds through engaging and interactive learning.</p>
+            </div>
+
+            <div class="card">
+                <h3>Secondary Education</h3>
+                <p>Equipping students with the skills and knowledge needed to excel academically and socially.</p>
+            </div>
+
+            <div class="card">
+                <h3>Extracurricular Activities</h3>
+                <p>Encouraging creativity and teamwork through sports, arts, and clubs.</p>
+            </div>
+        </section>
+
+        <section id="register" class="form-section">
+            <h2>Register</h2>
+            <form action="/submit-registration" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required minlength="2" maxlength="50">
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" pattern="\+?[0-9]{10,15}" required>
+
+                <label for="grade">Grade</label>
+                <select id="grade" name="grade" required>
+                    <option value="">Select Grade</option>
+                    <option value="1">Grade 1</option>
+                    <option value="2">Grade 2</option>
+                    <option value="3">Grade 3</option>
+                    <option value="4">Grade 4</option>
+                    <option value="5">Grade 5</option>
+                    <option value="6">Grade 6</option>
+                    <option value="7">Grade 7</option>
+                    <option value="8">Grade 8</option>
+                    <option value="9">Grade 9</option>
+                    <option value="10">Grade 10</option>
+                    <option value="11">Grade 11</option>
+                    <option value="12">Grade 12</option>
+                </select>
+
+                <label for="section">Section</label>
+                <input type="text" id="section" name="section" pattern="[A-Za-z]{1}" title="Please enter a single letter (A-Z)" required>
+
+                <div id="subject-section">
+                    <label>Subjects</label>
+                    <div id="subjects-grade-1" class="grade-subjects" style="display: none;">
+                        <input type="checkbox" name="subjects[]" value="math"> Mathematics<br>
+                        <input type="checkbox" name="subjects[]" value="english"> English<br>
+                        <input type="checkbox" name="subjects[]" value="science"> Science<br>
+                        <input type="checkbox" name="subjects[]" value="social_studies"> Social Studies<br>
+                    </div>
+                    <div id="subjects-grade-2" class="grade-subjects" style="display: none;">
+                        <input type="checkbox" name="subjects[]" value="math"> Mathematics<br>
+                        <input type="checkbox" name="subjects[]" value="english"> English<br>
+                        <input type="checkbox" name="subjects[]" value="science"> Science<br>
+                        <input type="checkbox" name="subjects[]" value="social_studies"> Social Studies<br>
+                    </div>
+                    <div id="subjects-grade-3" class="grade-subjects" style="display: none;">
+                        <input type="checkbox" name="subjects[]" value="math"> Mathematics<br>
+                        <input type="checkbox" name="subjects[]" value="english"> English<br>
+                        <input type="checkbox" name="subjects[]" value="science"> Science<br>
+                        <input type="checkbox" name="subjects[]" value="social_studies"> Social Studies<br>
+                        <input type="checkbox" name="subjects[]" value="history"> History<br>
+                    </div>
+                    <div id="subjects-grade-4" class="grade-subjects" style="display: none;">
+                        <input type="checkbox" name="subjects[]" value="math"> Mathematics<br>
+                        <input type="checkbox" name="subjects[]" value="english"> English<br>
+                        <input type="checkbox" name="subjects[]" value="science"> Science<br>
+                        <input type="checkbox" name="subjects[]" value="social_studies"> Social Studies<br>
+                        <input type="checkbox" name="subjects[]" value="history"> History<br>
+                        <input type="checkbox" name="subjects[]" value="geography"> Geography<br>
+                    </div>
+                    <div id="subjects-grade-5" class="grade-subjects" style="display: none;">
+                        <input type="checkbox" name="subjects[]" value="math"> Mathematics<br>
+                        <input type="checkbox" name="subjects[]" value="english"> English<br>
+                        <input type="checkbox" name="subjects[]" value="science"> Science<br>
+                        <input type="checkbox" name="subjects[]" value="social_studies"> Social Studies<br>
+                        <input type="checkbox" name="subjects[]" value="history"> History<br>
+                        <input type="checkbox" name="subjects[]" value="geography"> Geography<br>
+                    </div>
+                    <div id="subjects-grade-6" class="grade-subjects" style="display: none;">
+                        <input type="checkbox" name="subjects[]" value="math"> Mathematics<br>
+                        <input type="checkbox" name="subjects[]" value="english"> English<br>
+                        <input type="checkbox" name="subjects[]" value="science"> Science<br>
+                        <input type="checkbox" name="subjects[]" value="social_studies"> Social Studies<br>
+                        <input type="checkbox" name="subjects[]" value="history"> History<br>
+                        <input type="checkbox" name="subjects[]" value="geography"> Geography<br>
+                    </div>
+                    <div id="subjects-grade-7" class="grade-subjects" style="display: none;">
+                        <input type="checkbox" name="subjects[]" value="math"> Mathematics<br>
+                        <input type="checkbox" name="subjects[]" value="english"> English<br>
+                        <input type="checkbox" name="subjects[]" value="science"> Science<br>
+                        <input type="checkbox" name="subjects[]" value="social_studies"> Social Studies<br>
+                        <input type="checkbox" name="subjects[]" value="history"> History<br>
+                        <input type="checkbox" name="subjects[]" value="geography"> Geography<br>
+                    </div>
+                    <div id="subjects-grade-8" class="grade-subjects" style="display: none;">
+                        <input type="checkbox" name="subjects[]" value="math"> Mathematics<br>
+                        <input type="checkbox" name="subjects[]" value="english"> English<br>
+                        <input type="checkbox" name="subjects[]" value="science"> Science<br>
+                        <input type="checkbox" name="subjects[]" value="social_studies"> Social Studies<br>
+                        <input type="checkbox" name="subjects[]" value="history"> History<br>
+                        <input type="checkbox" name="subjects[]" value="geography"> Geography<br>
+                    </div>
+                    <div id="subjects-grade-9" class="grade-subjects" style="display: none;">
+                        <input type="checkbox" name="subjects[]" value="math"> Mathematics<br>
+                        <input type="checkbox" name="subjects[]" value="english"> English<br>
+                        <input type="checkbox" name="subjects[]" value="science"> Science<br>
+                        <input type="checkbox" name="subjects[]" value="social_studies"> Social Studies<br>
+                        <input type="checkbox" name="subjects[]" value="history"> History<br>
+                        <input type="checkbox" name="subjects[]" value="geography"> Geography<br>
+                    </div>
+                    <div id="subjects-grade-10" class="grade-subjects" style="display: none;">
+                        <input type="checkbox" name="subjects[]" value="math"> Mathematics<br>
+                        <input type="checkbox" name="subjects[]" value="english"> English<br>
+                        <input type="checkbox" name="subjects[]" value="science"> Science<br>
+                        <input type="checkbox" name="subjects[]" value="social_studies"> Social Studies<br>
+                        <input type="checkbox" name="subjects[]" value="history"> History<br>
+                        <input type="checkbox" name="subjects[]" value="geography"> Geography<br>
+                    </div>
+                    <div id="subjects-grade-11" class="grade-subjects" style="display: none;">
+                        <input type="checkbox" name="subjects[]" value="math"> Mathematics<br>
+                        <input type="checkbox" name="subjects[]" value="english"> English<br>
+                        <input type="checkbox" name="subjects[]" value="science"> Science<br>
+                        <input type="checkbox" name="subjects[]" value="social_studies"> Social Studies<br>
+                        <input type="checkbox" name="subjects[]" value="history"> History<br>
+                        <input type="checkbox" name="subjects[]" value="geography"> Geography<br>
+                    </div>
+                    <div id="subjects-grade-12" class="grade-subjects" style="display: none;">
+                        <input type="checkbox" name="subjects[]" value="math"> Mathematics<br>
+                        <input type="checkbox" name="subjects[]" value="english"> English<br>
+                        <input type="checkbox" name="subjects[]" value="science"> Science<br>
+                        <input type="checkbox" name="subjects[]" value="social_studies"> Social Studies<br>
+                        <input type="checkbox" name="subjects[]" value="history"> History<br>
+                        <input type="checkbox" name="subjects[]" value="geography"> Geography<br>
+                    </div>
+                </div>
+
+                <button type="submit">Submit Registration</button>
+            </form>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Gela Preparatory School. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
